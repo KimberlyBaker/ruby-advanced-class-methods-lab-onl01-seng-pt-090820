@@ -10,32 +10,60 @@ class Song
     self.class.all << self
   end
   
-  def Song.create
-    Song.all.include?(song)
-  end
-  
-  def Song.new_by_name
-    song = Song.new_by_name
-    song.name
-  end
-  
-  def Song.create_by_name
-    song = Song.create_by_name
+ def self.create
+    song = self.new
+    song.save
     song
-    Song.all.include?(song)
   end
-  
-  def self.find_by_name
-    the_middle = Song.create_by_name(song)
-    Song.find_by_name(song)
+
+  def self.new_by_name(name)
+    song = self.new
+    song.name = name
+    song
   end
-  
-  def self.find_or_create_by_name
-    
+
+  def self.create_by_name(name)
+    song = self.create
+    song.name = name
+    song
   end
-  
+
+  def self.find_by_name(name)
+    self.all.detect { |song| song.name == name }
+  end
+
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name) || self.create_by_name(name)
+  end
+
   def self.alphabetical
     self.all.sort_by { |song| song.name }
+  end
+
+  def self.new_from_filename(filename)
+    song_array = filename.split(" - ")
+    name = song_array[1][0..-5]
+    artist_name = song_array[0]
+
+    song = self.new
+    song.name = name
+    song.artist_name = artist_name
+    song
+  end
+
+  def self.create_from_filename(filename)
+    song_array = filename.split(" - ")
+    name = song_array[1][0..-5]
+    artist_name = song_array[0]
+
+    song = self.create
+    song.name = name
+    song.artist_name = artist_name
+    song
+  end
+
+  def self.destroy_all
+    self.all.clear
   end
 
 end
