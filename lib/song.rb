@@ -28,7 +28,6 @@ class Song
   def Song.find_by_name(name)
     the_middle = Song.create_by_name("The Middle")
     Song.find_by_name("The Middle")
-    
   end
   
 
