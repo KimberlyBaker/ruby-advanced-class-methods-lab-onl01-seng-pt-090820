@@ -32,15 +32,15 @@ class Song
     self.all.detect { |song| song.name == name }
   end
 
-  def self.find_or_create_by_name(name)
+  def Song.find_or_create_by_name(name)
     self.find_by_name(name) || self.create_by_name(name)
   end
 
-  def self.alphabetical
+  def Song.alphabetical
     self.all.sort_by { |song| song.name }
   end
 
-  def self.new_from_filename(filename)
+  def Song.new_from_filename(filename)
     song_array = filename.split(" - ")
     name = song_array[1][0..-5]
     artist_name = song_array[0]
@@ -51,7 +51,7 @@ class Song
     song
   end
 
-  def self.create_from_filename(filename)
+  def Song.create_from_filename(filename)
     song_array = filename.split(" - ")
     name = song_array[1][0..-5]
     artist_name = song_array[0]
@@ -62,7 +62,7 @@ class Song
     song
   end
 
-  def self.destroy_all
+  def Song.destroy_all
     self.all.clear
   end
 
