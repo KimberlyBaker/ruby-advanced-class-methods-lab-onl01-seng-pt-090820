@@ -14,21 +14,24 @@ class Song
     Song.all.include?(song)
   end
   
-  def Song.new_by_name(name)
+  def Song.new_by_name
     song = Song.new_by_name
     song.name
   end
   
-  def Song.create_by_name(song)
+  def Song.create_by_name
     song = Song.create_by_name
     song
     Song.all.include?(song)
   end
   
-  def Song.find_by_name(name)
-    the_middle = Song.create_by_name("The Middle")
-    Song.find_by_name("The Middle")
+  def Song.find_by_name
+    the_middle = Song.create_by_name(song)
+    Song.find_by_name(song)
   end
   
+  def Song.find_or_create_by_name
+    
+  end
 
 end
