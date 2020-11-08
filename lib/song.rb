@@ -10,10 +10,10 @@ class Song
     self.class.all << self
   end
   
-  def initialize
-    song = Song.create
-    Song.all.include?(song)
-    
+  def self.create
+    song = self.new
+    song.save
+    song
   end
 
 end
