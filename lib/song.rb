@@ -33,5 +33,9 @@ class Song
   def Song.find_or_create_by_name
     
   end
+  
+  def Song.alphabetical
+    
+  end
 
 end
