@@ -25,16 +25,16 @@ class Song
     Song.all.include?(song)
   end
   
-  def Song.find_by_name
+  def self.find_by_name
     the_middle = Song.create_by_name(song)
     Song.find_by_name(song)
   end
   
-  def Song.find_or_create_by_name
+  def self.find_or_create_by_name
     
   end
   
-  def Song.alphabetical
+  def self.alphabetical
     self.all.sort_by { |song| song.name }
   end
 
