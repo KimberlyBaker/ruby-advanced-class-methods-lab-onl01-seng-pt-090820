@@ -11,6 +11,8 @@ class Song
   end
   
   def initialize
+    song = Song.create
+    Song.all.include?(song)
     
   end
 
